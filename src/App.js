@@ -4,32 +4,19 @@ import Clock from './components/Clock';
 import Panel from './components/Panel';
 
 export default function App() {
-  const [cd, setCd] = useState(false);
-  const [br, setBr] = useState(false);
-  const [wDur, setWDur] = useState(25);
-  const [bDur, setBDur] = useState(5);
-  const [was, setWas] = useState(Date.now());
+  const [global, setGlobal] = useState({
+    started: false,
+    paused: false,
+    onBreak: false,
+    workDur: 25,
+    breakDur: 5,
+    then: Date.now(),
+  });
 
   return (
     <div>
-      <Clock
-        cd={cd}
-        br={br}
-        setCd={setCd}
-        setBr={setBr}
-        wDur={wDur}
-        bDur={bDur}
-        was={was}
-      />
-      <Panel
-        cd={cd}
-        setCd={setCd}
-        setWDur={setWDur}
-        setBDur={setBDur}
-        wDur={wDur}
-        bDur={bDur}
-        setWas={setWas}
-      />
+      <Clock global={global} setGlobal={setGlobal} />
+      <Panel global={global} setGlobal={setGlobal} />
     </div>
   );
 }
