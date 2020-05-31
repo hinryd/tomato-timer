@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Clock from './components/Clock';
+import Panel from './components/Panel';
 
-function App() {
+export default function App() {
+  const [cd, setCd] = useState(false);
+  const [br, setBr] = useState(false);
+  const [wDur, setWDur] = useState(25);
+  const [bDur, setBDur] = useState(5);
+  const [was, setWas] = useState(Date.now());
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Clock
+        cd={cd}
+        br={br}
+        setCd={setCd}
+        setBr={setBr}
+        wDur={wDur}
+        bDur={bDur}
+        was={was}
+      />
+      <Panel
+        cd={cd}
+        setCd={setCd}
+        setWDur={setWDur}
+        setBDur={setBDur}
+        wDur={wDur}
+        bDur={bDur}
+        setWas={setWas}
+      />
     </div>
   );
 }
-
-export default App;
